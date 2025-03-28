@@ -1,0 +1,18 @@
+
+services:
+  mynoDB:
+    image: postgres:16.8
+    container_name: myno-db
+    #    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: myno
+    volumes:
+      - myno-db:/var/lib/postgresql/data
+
+volumes:
+  myno-db:
+

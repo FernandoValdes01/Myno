@@ -1,0 +1,16 @@
+{
+  "name": "myno",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "client:dev": "bun --cwd client dev",
+    "dev": "concurrently --names 'client,server' --prefix-colors 'green,cyan' 'bun run client:dev'"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^9.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

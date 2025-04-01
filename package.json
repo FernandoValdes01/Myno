@@ -1,6 +1,9 @@
 {
   "name": "myno",
   "type": "module",
+  "workspaces": [
+    "client"
+  ],
   "private": true,
   "scripts": {
     "client:dev": "bun --cwd client dev",

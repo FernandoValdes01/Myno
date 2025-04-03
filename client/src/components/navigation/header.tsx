@@ -15,6 +15,7 @@ import {
 import { useTheme } from "next-themes";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Logo } from "@/components/logo";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false); // es para mobile
@@ -43,7 +44,11 @@ export default function Header() {
       }`}
     >
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
-        <Link href="/" className="text-xl font-semibold">
+        <Link
+          href="/"
+          className="text-xl font-semibold flex items-center gap-x-2"
+        >
+          <Logo />
           Myno
         </Link>
 

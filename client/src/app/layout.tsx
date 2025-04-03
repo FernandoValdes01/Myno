@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Myno",
   description: "Myno - Tienda Mayorista",
+  icons: {
+    icon: "/logo-con-fondo.svg",
+  },
 };
 
 export default function RootLayout({

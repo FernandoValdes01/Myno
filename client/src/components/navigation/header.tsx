@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Search, User, X } from "lucide-react";
+import { Search, ShoppingCart, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,8 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
-import { Label } from "../ui/label";
-import { Switch } from "../ui/switch";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false); // es para mobile
@@ -43,13 +43,17 @@ export default function Header() {
       }`}
     >
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
-        {/* Logo */}
         <Link href="/" className="text-xl font-semibold">
           Myno
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" asChild size="icon" aria-label="Carrito">
+            <Link href={`/cart`}>
+              <ShoppingCart />
+            </Link>
+          </Button>
           <div className="items-center hidden md:flex">
             <div className="relative flex items-center w-64 h-9">
               <Input
@@ -58,7 +62,9 @@ export default function Header() {
                 className="h-9 w-full"
               />
               <Button size="sm" variant="ghost" className="absolute right-0">
-                <Search className="w-4 h-4" />
+                <Link href={`/search`}>
+                  <Search className="w-4 h-4" />
+                </Link>
               </Button>
             </div>
           </div>

@@ -12,6 +12,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTheme } from "next-themes";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false); // es para mobile
@@ -68,6 +71,18 @@ export default function Header() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/profile/history">Historial</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <div className="flex items-center justify-between space-x-2 py-2">
+                  <Label htmlFor="toggleDarkMode">Modo Oscuro</Label>
+                  <Switch
+                    id="toggleDarkMode"
+                    checked={theme === "dark"}
+                    onCheckedChange={() =>
+                      setTheme(theme === "dark" ? "light" : "dark")
+                    }
+                  />
+                </div>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Cerrar Sesión</DropdownMenuItem>

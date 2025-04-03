@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,9 +18,30 @@ import { Switch } from "../ui/switch";
 
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false); // es para mobile
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const { theme, setTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
+    <header
+      className={`sticky top-0 z-50 w-full bg-background transition-all duration-200 ${
+        hasScrolled ? "border-b shadow-sm" : ""
+      }`}
+    >
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
         {/* Logo */}
         <Link href="/" className="text-xl font-semibold">

@@ -36,7 +36,7 @@ export default function Header() {
   }, []);
 
   const { theme, setTheme } = useTheme();
-
+  const totalItems = 2;
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-background transition-all duration-200 ${
@@ -56,7 +56,14 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Button variant="ghost" asChild size="icon" aria-label="Carrito">
             <Link href={`/cart`}>
-              <ShoppingCart />
+              <div className="relative">
+                {totalItems > 0 && (
+                  <span className="absolute text-xs px-1 rounded-full font-bold -top-2 -right-2 bg-primary text-white dark:text-black">
+                    {totalItems}
+                  </span>
+                )}
+                <ShoppingCart size={24} />
+              </div>
             </Link>
           </Button>
           <div className="items-center hidden md:flex">

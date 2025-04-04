@@ -1,18 +1,28 @@
+version: '3.8'
 
 services:
-  mynoDB:
-    image: postgres:16.8
-    container_name: myno-db
-    #    restart: always
+  web:  # Servicio de Django
+    build: ./Server  # Ruta al Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./Server:/app  # Montar el código para desarrollo
     ports:
-      - 5432:5432
+      - "8000:8000"
+    depends_on:
+      - mynoDB
+    env_file:
+      - .env  # Variables para Django (DB, SECRET_KEY, etc.)
+
+  mynoDB:  # Servicio de PostgreSQL (el que ya tienes)
+    image: postgres:16.8
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: myno
     volumes:
       - myno-db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
 
 volumes:
   myno-db:
-

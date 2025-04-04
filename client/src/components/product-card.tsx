@@ -6,19 +6,14 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useCartStore } from "@/store/cart";
 import defaultIMG from "@/assets/logo.png";
+import { Product } from "@/types/products";
 
-interface ProductCardProps {
-  name: string;
-  price: number;
-  image?: StaticImageData;
-}
-
-export function ProductCard({ name, price, image }: ProductCardProps) {
+export function ProductCard({ name, price, image, slug, categoria }: Product) {
   const addToCart = useCartStore((state) => state.addToCart);
   return (
     // <Link href="#" className="block transition-opacity hover:opacity-80">
@@ -42,12 +37,21 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
       <CardFooter>
         <Button
           className="w-full"
-          onClick={() => addToCart({ id: 1, name, price, quantity: 1 })}
+          onClick={() =>
+            addToCart({
+              id: 1,
+              name,
+              price,
+              quantity: 1,
+              image,
+              slug,
+              categoria,
+            })
+          }
         >
           Añadir al carrito
         </Button>
       </CardFooter>
     </Card>
-    // </Link>
   );
 }

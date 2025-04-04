@@ -1,14 +1,6 @@
+import { CartProduct } from "@/types/products";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-interface CartProduct {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  // image: string | StaticImageData;
-  // slug: string
-}
 
 interface State {
   cart: CartProduct[];

@@ -23,7 +23,7 @@ export const Summary = () => {
               <span>${subTotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">IVA (21%)</span>
+              <span className="text-muted-foreground">IVA (15%)</span>
               <span>${tax.toFixed(2)}</span>
             </div>
           </div>

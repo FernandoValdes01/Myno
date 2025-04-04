@@ -13,16 +13,15 @@ export default function CartPage() {
   return (
     <div className="container px-4 py-8 mx-auto max-w-6xl">
       <h1 className="text-2xl font-bold mb-6">Carrito de Compra</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {!isEmpty ? (
-          <>
-            <ProductsInCart />
-            <Summary />
-          </>
-        ) : (
-          <EmptyCart />
-        )}
-      </div>
+
+      {!isEmpty ? (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <ProductsInCart />
+          <Summary />
+        </div>
+      ) : (
+        <EmptyCart />
+      )}
 
       <Recomendations />
     </div>

@@ -6,8 +6,9 @@ import { Separator } from "@/components/ui/separator";
 import { useCartStore } from "@/store/cart";
 
 export const Summary = () => {
-  const getSummary = useCartStore((state) => state.getSummary);
-  const { total, subTotal, tax } = getSummary();
+  const total = useCartStore((state) => state.getSummary().total);
+  const subTotal = useCartStore((state) => state.getSummary().subTotal);
+  const tax = useCartStore((state) => state.getSummary().tax);
 
   return (
     <div>

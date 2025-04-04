@@ -6,9 +6,8 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const ShoppingCartButton = () => {
-  const getSummary = useCartStore((state) => state.getSummary);
-  const { totalItems } = getSummary();
   const [loaded, setLoaded] = useState(false);
+  const totalItems = useCartStore((state) => state.getSummary().totalItems);
 
   useEffect(() => {
     setLoaded(true);

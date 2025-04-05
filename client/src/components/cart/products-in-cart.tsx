@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useCartStore } from "@/store/cart";
+import Image from "next/image";
 
 export const ProductsInCart = () => {
   const {
@@ -31,17 +32,20 @@ export const ProductsInCart = () => {
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-6 py-4"
               >
                 <div className="w-20 h-20 bg-muted rounded-md overflow-hidden flex-shrink-0">
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    Imagen
-                  </div>
+                  <Image
+                    src={item.image}
+                    width={80}
+                    height={80}
+                    alt={item.name}
+                  />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-medium">{item.name}</h3>
                   <p className="text-muted-foreground text-sm">
-                    Código: PROD-{item.id}
+                    {item.categoria}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">

@@ -7,8 +7,8 @@ import { useCartStore } from "@/store/cart";
 import { EmptyCart } from "@/components/cart/empty-cart";
 
 export default function CartPage() {
-  const getSummary = useCartStore((state) => state.getSummary);
-  const isEmpty = getSummary().totalItems === 0;
+  const totalItems = useCartStore((state) => state.getSummary().totalItems);
+  const isEmpty = totalItems === 0;
 
   return (
     <div className="container px-4 py-8 mx-auto max-w-6xl">

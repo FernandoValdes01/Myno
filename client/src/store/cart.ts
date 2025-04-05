@@ -49,7 +49,11 @@ export const useCartStore = create<State>()(
       },
 
       updateProductQuantity: (id: number, quantity: number) => {
-        const { cart } = get();
+        const { cart, removeFromCart } = get();
+        if (quantity == 0) {
+            removeFromCart(id);
+            return
+        }
 
         const updatedCartProducts = cart.map((item) => {
           if (item.id === id) {

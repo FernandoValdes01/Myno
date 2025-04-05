@@ -34,7 +34,7 @@ import Link from "next/link";
 
 export default function HistoryPage() {
   return (
-    <div className="container px-4 py-8 mx-auto max-w-5xl">
+    <div className="container px-4 py-8 mx-auto max-w-7xl">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Historial de Compras</h1>
         <div className="flex items-center gap-2">

@@ -62,7 +62,9 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-sans)]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-sans)]
+          
+        `}
       >
         <ThemeProvider
           attribute="class"
@@ -71,7 +73,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="container px-4 py-8 mx-auto">{children}</main>
+          <main className="container px-4 py-8 mx-auto max-w-7xl">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

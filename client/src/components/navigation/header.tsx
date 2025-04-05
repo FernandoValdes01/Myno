@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full bg-background transition-all duration-200 ${
+      className={`sticky top-0 z-50 max-w-7xl mx-auto bg-background transition-all duration-200 ${
         hasScrolled ? "border-b shadow-sm" : ""
       }`}
     >

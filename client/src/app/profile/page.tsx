@@ -6,7 +6,7 @@ import { Preferences } from "@/components/profile/preferences";
 
 export default function ProfilePage() {
   return (
-    <div className="container px-4 py-8 mx-auto max-w-6xl">
+    <div className="container px-4 py-8 mx-auto max-w-7xl">
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex-1">
           <Tabs defaultValue="personal" className="w-full">

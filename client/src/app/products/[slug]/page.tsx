@@ -8,8 +8,8 @@ interface Props {
   };
 }
 
-export default function ProductPage({ params }: Props) {
-  const { slug } = params;
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params;
 
   const product = recommendations.find((product) => product.slug === slug);
   if (!product) notFound();

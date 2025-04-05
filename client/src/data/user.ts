@@ -1,7 +1,7 @@
 export const   user = {
   firstName: "Vicente",
   lastName: "Rivera",
-  email: "vrivera2023@alu.uct.cl",
+  email: "vrivera.dev@gmail.com",
   since: "Marzo 2023",
   company: "Myno",
   purchases: 12,

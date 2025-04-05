@@ -13,7 +13,14 @@ import { useCartStore } from "@/store/cart";
 import defaultIMG from "@/assets/logo.png";
 import { Product } from "@/types/products";
 
-export function ProductCard({ name, price, image, slug, categoria }: Product) {
+export function ProductCard({
+  id,
+  name,
+  price,
+  image,
+  slug,
+  categoria,
+}: Product) {
   const addToCart = useCartStore((state) => state.addToCart);
   return (
     // <Link href="#" className="block transition-opacity hover:opacity-80">
@@ -39,7 +46,7 @@ export function ProductCard({ name, price, image, slug, categoria }: Product) {
           className="w-full"
           onClick={() =>
             addToCart({
-              id: 1,
+              id,
               name,
               price,
               quantity: 1,

@@ -7,12 +7,7 @@ export const Recomendations = () => {
       <h2 className="text-xl font-semibold mb-6">También te puede interesar</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {recommendations.map((product) => (
-          <ProductCard
-            image={product.image}
-            key={product.id}
-            name={product.name}
-            price={product.price}
-          />
+          <ProductCard key={product.id} {...product} />
         ))}
       </div>
     </div>

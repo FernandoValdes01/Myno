@@ -11,7 +11,7 @@ export default function CartPage() {
   const isEmpty = totalItems === 0;
 
   return (
-    <div className="container px-4 py-8 mx-auto max-w-7xl">
+    <>
       <h1 className="text-2xl font-bold mb-6">Carrito de Compra</h1>
 
       {!isEmpty ? (
@@ -24,6 +24,6 @@ export default function CartPage() {
       )}
 
       <Recomendations />
-    </div>
+    </>
   );
 }

@@ -25,7 +25,7 @@ export function ProductCard({
   return (
     // <Link href="#" className="block transition-opacity hover:opacity-80">
     <Card className="overflow-hidden rounded-none pt-0">
-      <CardHeader className="p-0">
+      <CardHeader className="md:px-0">
         <Image
           src={image ?? defaultIMG}
           placeholder="blur"
@@ -35,25 +35,15 @@ export function ProductCard({
           className="object-cover w-full h-full"
         />
       </CardHeader>
-      <CardContent className="">
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-medium truncate">{name}</p>
-          <p className="text-sm font-medium">${formatPrice(price)}</p>
-        </div>
+      <CardContent className="flex-col md:flex md:flex-row items-center md:justify-between">
+        <p className="text-sm font-medium truncate">{name}</p>
+        <p className="text-sm font-medium">${formatPrice(price)}</p>
       </CardContent>
       <CardFooter>
         <Button
           className="w-full"
           onClick={() =>
-            addToCart({
-              id,
-              name,
-              price,
-              quantity: 1,
-              image,
-              slug,
-              categoria,
-            })
+            addToCart({ id, name, price, image, slug, categoria, quantity: 1 })
           }
         >
           Añadir al carrito

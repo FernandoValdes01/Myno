@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Search, ShoppingCart, User, X } from "lucide-react";
+import { Search, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,8 +16,10 @@ import { useTheme } from "next-themes";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Logo } from "@/components/logo";
+import { ShoppingCartButton } from "./shopping-cart";
 
 export default function Header() {
+  const { theme, setTheme } = useTheme();
   const [isSearchOpen, setIsSearchOpen] = useState(false); // es para mobile
   const [hasScrolled, setHasScrolled] = useState(false);
 
@@ -35,8 +37,6 @@ export default function Header() {
     };
   }, []);
 
-  const { theme, setTheme } = useTheme();
-  const totalItems = 2;
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-background transition-all duration-200 ${
@@ -56,14 +56,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Button variant="ghost" asChild size="icon" aria-label="Carrito">
             <Link href={`/cart`}>
-              <div className="relative">
-                {totalItems > 0 && (
-                  <span className="absolute text-xs px-1 rounded-full font-bold -top-2 -right-2 bg-primary text-white dark:text-black">
-                    {totalItems}
-                  </span>
-                )}
-                <ShoppingCart size={24} />
-              </div>
+              <ShoppingCartButton />
             </Link>
           </Button>
           <div className="items-center hidden md:flex">

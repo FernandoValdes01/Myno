@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import type { Product } from "@/types/products";
 import { ProductCard } from "@/components/product-card";
 import { formatPrice } from "@/lib/utils";
+import { useCartStore } from "@/store/cart";
 
 interface ProductDetailProps {
   product: Product;
@@ -28,18 +29,20 @@ export default function ProductDetail({
 }: ProductDetailProps) {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
-    setIsAddedToCart(true);
+    // setIsAddedToCart(true);
+    addToCart({ ...product, quantity: 1 });
     // toast({
     //   title: "Añadido al carrito",
     //   description: `${product.name} (${quantity}) ha sido añadido a tu carrito`,
     // })
 
     // reset button
-    setTimeout(() => {
-      setIsAddedToCart(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   setIsAddedToCart(false);
+    // }, 1000);
   };
 
   // Handle adding to wishlist
@@ -127,7 +130,7 @@ export default function ProductDetail({
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button
-              className="flex-1"
+              className="flex-1 active:opacity-80"
               onClick={handleAddToCart}
               disabled={isAddedToCart}
             >

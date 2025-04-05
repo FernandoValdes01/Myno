@@ -9,6 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { user } from "@/data/user";
+import Link from "next/link";
 
 export const UserInfo = () => {
   return (
@@ -43,7 +44,10 @@ export const UserInfo = () => {
           </div> */}
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-2">
+          <Button variant="outline" className="w-full" asChild>
+            <Link href="/profile/history">Ver Historial de Compras</Link>
+          </Button>
           <Button variant="outline" className="w-full">
             Cerrar Sesión
           </Button>

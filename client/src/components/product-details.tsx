@@ -1,16 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Share2,
-  Heart,
-  ShoppingCart,
-  Check,
-  Truck,
-  RotateCcw,
-} from "lucide-react";
+import { Share2, Heart, ShoppingCart, Truck, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import type { Product } from "@/types/products";
@@ -27,8 +19,6 @@ export default function ProductDetail({
   product,
   relatedProducts,
 }: ProductDetailProps) {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
   const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
@@ -47,7 +37,6 @@ export default function ProductDetail({
 
   // Handle adding to wishlist
   const handleAddToWishlist = () => {
-    setIsAddedToWishlist(!isAddedToWishlist);
     // toast({
     //   title: isAddedToWishlist ? "Eliminado de favoritos" : "Añadido a favoritos",
     //   description: isAddedToWishlist
@@ -108,14 +97,10 @@ export default function ProductDetail({
               <Button
                 variant="ghost"
                 size="icon"
-                className={isAddedToWishlist ? "text-red-500" : ""}
+                className={false ? "text-red-500" : ""}
                 onClick={handleAddToWishlist}
               >
-                <Heart
-                  className={`h-5 w-5 ${
-                    isAddedToWishlist ? "fill-red-500" : ""
-                  }`}
-                />
+                <Heart className={`h-5 w-5 ${false ? "fill-red-500" : ""}`} />
               </Button>
             </div>
             <div className="flex items-center justify-between mt-2 gap-2">
@@ -132,19 +117,9 @@ export default function ProductDetail({
             <Button
               className="flex-1 active:opacity-80"
               onClick={handleAddToCart}
-              disabled={isAddedToCart}
             >
-              {isAddedToCart ? (
-                <>
-                  <Check className="mr-2 h-5 w-5" />
-                  Añadido
-                </>
-              ) : (
-                <>
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  Añadir al carrito
-                </>
-              )}
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              Añadir al carrito
             </Button>
             <Button variant="outline" size="icon" className="hidden sm:flex">
               <Share2 className="h-5 w-5" />

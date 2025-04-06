@@ -8,6 +8,12 @@ interface Props {
   }>;
 }
 
+export async function generateStaticParams() {
+  return recommendations.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
 
